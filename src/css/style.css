@@ -1,0 +1,8 @@
+#selector {
+	background-color: lightgray;
+}
+
+#fixed {
+	position: fixed;
+	width: 100%;
+}
