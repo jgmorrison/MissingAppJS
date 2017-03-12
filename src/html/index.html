@@ -5,25 +5,55 @@
 <link rel="stylesheet" type=text/css" href="/css/style.css"/>
 </head>
 <body>
+<!--Top Menu Bar-->
 <div class="title-bar" id="fixed">
 	<div class="title-bar-left">
 		MyAppJS
 	</div>
-		<div class="menu-icon title-bar-right">
+		<div class="menu-icon title-bar-right" style="margin: 5px;">
 	</div>
 </div>
 
-<div class="large-3 columns" id="selector" style="height: 1500px; padding-top: 50px;">
+<!--Selector Section-->
+<div class="small-12 medium-12 large-3 columns" id="selector" style="height: 1500px; padding: 50px;">
 	<p>Selector Area:</p>
+<!--Location Selector-->
+	<p>Location: </p>
 	<select>
 		<option value="">--Select State--</option>	
 	</select>
         <select>
                 <option value="">--Select City--</option>
         </select>
+
+<!--Date Selector-->
+	<p>Date: </p>
+	<select>
+		<option value="">--Select Month--</option>
+	</select>
+	<select>
+                <option value="">--Select Day--</option>
+        </select>
+	<select>
+                <option value="">--Select Year--</option>
+        </select>
+
+<!--Gender Selector-->
+	<p>Gender: </p>
+	<div class="row">
+		<div class="small-5 small-offset-1 columns">
+			<p>Male</p>
+			<input type="radio" value="male" name="gender">
+		</div>
+		<div class="small-5 columns">
+                        <p>Female</p>
+                        <input type="radio" value="female" name="gender">
+                </div>
+	</div>
 </div>
 
-<div class="large-9 columns" style="padding-top: 50px;">
+<!--Results Section-->
+<div class="small-12 large-9 columns" style="padding-top: 50px;">
 <p>Result Area:</p>
 </div>
 
