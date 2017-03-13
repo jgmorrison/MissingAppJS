@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/css/foundation.css"/>
-<link rel="stylesheet" type=text/css" href="/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../css/foundation.css"/>
+<link rel="stylesheet" type=text/css" href="../css/style.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
 </head>
 <body>
+
+<div data-ng-app="MyApp" data-ng-controller="MyCtrl">
+
 <!--Top Menu Bar-->
 <div class="title-bar" id="fixed">
 	<div class="title-bar-left">
@@ -19,11 +23,13 @@
 	<p>Selector Area:</p>
 <!--Location Selector-->
 	<p>Location: </p>
-	<select>
-		<option value="">--Select State--</option>	
+	<select data-ng-model="selectedState" data-ng-change="updateCityList()">
+		<option value="">--Select State--</option>
+		<option data-ng-repeat="(k, v) in cityStateInfo" value="{{ k }}">{{ k }}</option>	
 	</select>
         <select>
                 <option value="">--Select City--</option>
+		<option data-ng-repeat="city in cityList"value="{{ city }}">{{ city }}</option>
         </select>
 
 <!--Date Selector-->
@@ -55,7 +61,9 @@
 <!--Results Section-->
 <div class="small-12 large-9 columns" style="padding-top: 50px;">
 <p>Result Area:</p>
+<h2>{{ greeting }}</h2>
 </div>
-
+</div>
+<script src="../angular/app.js"></script>
 </body>
 </html>
