@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../css/foundation.css"/>
-<link rel="stylesheet" type=text/css" href="../css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
 </div>
 
 <!--Selector Section-->
-<div class="small-12 medium-12 large-3 columns" id="selector" style="height: 1500px; padding: 50px;">
+<div class="small-12 medium-12 large-3 columns" id="selector" style="height: 850px; padding: 50px;">
 	<p>Selector Area:</p>
 <!--Location Selector-->
 	<p>Location: </p>
@@ -56,14 +56,37 @@
                         <input type="radio" value="female" name="gender">
                 </div>
 	</div>
+
+	<button type="button" class="button" data-ng-click="getResults()">Get Results!</button>
 </div>
 
 <!--Results Section-->
-<div class="small-12 large-9 columns" style="padding-top: 50px;">
-<p>Result Area:</p>
-<h2>{{ greeting }}</h2>
+<div class="small-12 large-9 columns" style="padding-top: 50px; height: 850px; overflow: scroll;">
+
+    <div data-ng-repeat="case in results">
+        <p>Name: {{ case.Name }}</p>
+        <p>Age: {{ case.Age }}</p>
+        <p>Date of Birth: {{case.DOB }}</p>
+        <p>Missing Since: {{ case.Missing_Since }}</p>
+        <p>Height and Weight: {{ case.Height_Weight }}</p>
+        <p>Gender: {{ case.Gender }}</p>
+        <p>City: {{ case.City }}</p>
+        <p>State: {{ case.State }}</p>
+        <p>Classification: {{ case.Classification }}</p>
+        <p>Characteristics: {{ case.Characteristics }}</p>
+        <p>Items: {{ case.Items }}</p>
+        <p>Medical Condition: {{ case.Medical_Conditions }}</p>
+        <p>For details of the disapearance and images please visit the following link: <br/>
+            <a target="_blank" href="{{ case.Link_URL }}">{{ case.Link_URL }}</a></p>
+        <hr/>                       
+    </div>
+                                                                
 </div>
+
+<div class="small-12 large-12 columns " style="height: 70px; background-color: gray;"></div>
+                                                                
 </div>
+                                                                
 <script src="../angular/app.js"></script>
 </body>
 </html>
