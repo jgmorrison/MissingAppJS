@@ -7,21 +7,24 @@ db = conn['missing_persons']
 
 coll = db['charley']
 
-citydic = {}
-states = open("states.txt", "r")
+json_list = []
+states = open("list_of_states.txt", "r")
 for state in states:
 	data = coll.find({"State" : state.strip("\n")})
 	cities = []
 	for item in data:
-		cities.append(str(item["City"]))
+		if item["City"] != "N/A":
+			cities.append(str(item["City"]))
 
+	city_state_dict = {}
 	clean = list(sorted(set(cities)))
-	citydic[state] = clean
+	city_state_dict["state"] = state.strip("\n")
+	city_state_dict["cities"] = clean
+	json_list.append(city_state_dict)
 
 
+j = json.dumps(json_list)
 
-j = json.dumps(citydic)
-
-file = open("cityState.json", "w")
+file = open("cityStateInfo.json", "w")
 with file as f:
 	f.write(j)

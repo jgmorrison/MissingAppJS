@@ -1,12 +1,12 @@
 var app = angular.module("MyApp", []);
 app.controller("MyCtrl", function ($scope, $http) {
-	$scope.selectedState = "";
+	$scope.selectedStateIndex = "";
 	$scope.cityList = [];
     $scope.stateList = [];
 	$scope.results = {};
 
 	$scope.updateCityList = function () {
-		$scope.cityList = $scope.cityStateInfo[$scope.selectedState];
+		$scope.cityList = $scope.cityStateInfo[$scope.selectedStateIndex].cities;
 	};
 
 	$scope.cityStateInfo = {};
@@ -14,9 +14,6 @@ app.controller("MyCtrl", function ($scope, $http) {
 		$http.get('http://localhost:3000/cities')
 			.then(function (res) {
 				$scope.cityStateInfo = res.data;
-                for (var k in res.data) {
-                    $scope.stateList.push(k);
-                };
 			});
 	};
 	$scope.getCityStateInfo();

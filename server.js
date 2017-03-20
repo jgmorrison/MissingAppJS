@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 });
 
 app.get("/cities", function (req, res) {
-	res.sendFile(__dirname + '/cityStateInfo.json');
+	res.sendFile(__dirname + '/src/assets/cityStateInfo.json');
 });
 
 app.use("/data", function (req, res, next) {
