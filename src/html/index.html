@@ -1,6 +1,93 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+</head>
 <body>
-<p>finally! it is working!</p>
+
+<div data-ng-app="MyApp" data-ng-controller="MyCtrl">
+
+<!--Top Menu Bar-->
+<div class="title-bar" id="fixed">
+	<div class="title-bar-left">
+		MyAppJS
+	</div>
+		<div class="menu-icon title-bar-right" style="margin: 5px;">
+	</div>
+</div>
+
+<!--Selector Section-->
+<div class="small-12 medium-12 large-3 columns" id="selector" style="height: 850px; padding: 50px;">
+	<p>Selector Area:</p>
+<!--Location Selector-->
+	<p>Location: </p>
+	<select data-ng-model="selectedStateIndex" data-ng-change="updateCityList()">
+		<option value="">--Select State--</option>
+		<option data-ng-repeat="item in cityStateInfo" value="{{ $index }}">{{ item.state }}</option>	
+	</select>
+        <select>
+                <option value="">--Select City--</option>
+		<option data-ng-repeat="city in cityList"value="{{ city }}">{{ city }}</option>
+        </select>
+
+<!--Date Selector-->
+	<p>Date: </p>
+	<select>
+		<option value="">--Select Month--</option>
+	</select>
+	<select>
+                <option value="">--Select Day--</option>
+        </select>
+	<select>
+                <option value="">--Select Year--</option>
+        </select>
+
+<!--Gender Selector-->
+	<p>Gender: </p>
+	<div class="row">
+		<div class="small-5 small-offset-1 columns">
+			<p>Male</p>
+			<input type="radio" value="male" name="gender">
+		</div>
+		<div class="small-5 columns">
+                        <p>Female</p>
+                        <input type="radio" value="female" name="gender">
+                </div>
+	</div>
+
+	<button type="button" class="button" data-ng-click="getResults()">Get Results!</button>
+</div>
+
+<!--Results Section-->
+<div class="small-12 large-9 columns" style="padding-top: 50px; height: 850px; overflow: scroll;">
+
+    <div data-ng-repeat="case in results">
+        <p class="small-6 large-6 columns"><b>Name:</b> {{ case.Name }}</p>
+	<p class="small-6 large-6 columns"><b>Missing Since:</b> {{ case.Missing_Since }}</p>
+        <p class="small-6 large-6 columns"><b>Age:</b> {{ case.Age }}</p>
+        <p class="small-6 large-6 columns"><b>Date of Birth:</b> {{case.DOB }}</p>
+        <p class="small-6 large-6 columns"><b>Height and Weight:</b> {{ case.Height_Weight }}</p>
+        <p class="small-6 large-6 columns"><b>Gender:</b> {{ case.Gender }}</p>
+        <p class="small-6 large-6 columns"><b>City:</b> {{ case.City }}</p>
+        <p class="small-6 large-6 columns"><b>State:</b> {{ case.State }}</p>
+        <p class="small-12 large-12 columns"><b>Classification:</b> {{ case.Classification }}</p>
+        <p class="small-12 large-12 columns"><b>Characteristics:</b> {{ case.Characteristics }}</p>
+        <p class="small-12 large-12 columns"><b>Items:</b> {{ case.Items }}</p>
+        <p class="small-12 large-12 columns"><b>Medical Condition:</b> {{ case.Medical_Conditions }}</p>
+        <p class="small-12 large-12 columns"><b>For details of the disapearance and images please visit the following link:</b> 
+            <a class="small-12 large-12 columns" target="_blank" href="{{ case.Link_URL }}">{{ case.Link_URL }}</a></p>
+        <hr/>                       
+    </div>
+                                                                
+</div>
+
+<div class="small-12 large-12 columns " style="height: 70px; background-color: gray;"></div>
+                                                                
+</div>
+                                                                
+<script src="../angular/app.js"></script>
 </body>
 </html>
