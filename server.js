@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-app.use(express.static(__dirname + '/src/'));
+app.use(express.static('src'));
 
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/src/html/index.html');
