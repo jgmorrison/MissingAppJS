@@ -11,7 +11,7 @@ app.controller("MyCtrl", function ($scope, $http) {
 
 	$scope.cityStateInfo = {};
 	$scope.getCityStateInfo = function () {
-		$http.get('http://localhost:3000/cities')
+		$http.get('http://localhost:3000/cityStateInfo')
 			.then(function (res) {
 				$scope.cityStateInfo = res.data;
 			});

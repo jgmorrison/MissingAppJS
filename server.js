@@ -1,5 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var charley = require('./models/charley.js')
 
 var app = express();
 
@@ -9,7 +10,7 @@ app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/src/html/index.html');
 });
 
-app.get("/cities", function (req, res) {
+app.get("/cityStateInfo", function (req, res) {
 	res.sendFile(__dirname + '/src/assets/cityStateInfo.json');
 });
 
@@ -29,25 +30,5 @@ app.get("/data", function (req, res) {
 	});
 });
 
-var Schema = mongoose.Schema;
-    
-    var charleySchema = new Schema({
-        _id: 0,
-        City: String,
-        Name: String,
-        DOB: String,
-        Gender: String,
-        Missing_Since: String,
-        State: String,
-        Height_Weight: String,
-        Classification: String,
-        Characteristics: String,
-        Link_URL: String,
-        Items: String,
-        Medical_Conditions: String,
-        Age: String
-    });
-
-var charley = mongoose.model("Charley", charleySchema, 'charley');
 
 app.listen('3000');
