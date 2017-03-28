@@ -28,7 +28,7 @@
 		<option value="">--Select State--</option>
 		<option data-ng-repeat="item in cityStateInfo" value="{{ $index }}">{{ item.state }}</option>	
 	</select>
-        <select>
+        <select data-ng-model="selectedCity">
                 <option value="">--Select City--</option>
 		<option data-ng-repeat="city in cityList"value="{{ city }}">{{ city }}</option>
         </select>
