@@ -6,6 +6,7 @@ app.controller("MyCtrl", function ($scope, $http) {
 	$scope.cityList = [];
     $scope.stateList = [];
 	$scope.results = {};
+    $scope.gender = "";
 
 	$scope.updateCityList = function () {
 		$scope.cityList = $scope.cityStateInfo[$scope.selectedStateIndex].cities;
@@ -22,7 +23,11 @@ app.controller("MyCtrl", function ($scope, $http) {
 	$scope.getCityStateInfo();
 
 	$scope.getResults = function () {
-		$http.get('http://localhost:3000/data/' + $scope.selectedState + '/' + $scope.selectedCity)
+		$http.get('http://localhost:3000/getter', {params: {
+                "state" : $scope.selectedState, 
+                "city" : $scope.selectedCity, 
+                "gender" : $scope.gender}
+            })
 			.then(function (res) {
 				$scope.results = res.data;
 			}); 
