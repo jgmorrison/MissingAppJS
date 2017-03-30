@@ -19,24 +19,6 @@ app.get("/cityStateInfo", function (req, res) {
 	res.sendFile(__dirname + '/src/assets/cityStateInfo.json');
 });
 
-app.get("/getter", function (req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    var state = req.query["state"];
-    var city = req.query["city"];
-    var gender = req.query["gender"];
-    console.log(state, city, gender);
-    if (state != null && city != null && gender != null) {
-        charley.find({"State" : state, "City" : city, "Gender" : gender}, function (err, data) {
-            res.send(data);
-        });
-    }
-});
-
-
-
-
-
-
 app.get("/data", function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
     charley.find(function (err, data) {
@@ -73,5 +55,25 @@ app.get("/data/:state/:city/:gender", function (req, res) {
         res.send(data);
     });
 });
+
+
+app.use("/getdata", function (req, res, next) {
+    req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender']};
     
+    var search_params = {};
+    for (var k in req_queries) {
+        if (req_queries[k] != "") {
+            search_params[k] = req_queries[k];
+        }
+    }
+    res.search_params = search_params;
+    next();
+});
+
+app.get("/getdata", function (req, res) {
+    charley.find(res.search_params, function (err, data) {
+        res.send(data);
+    }) 
+});
+
 app.listen('3000');

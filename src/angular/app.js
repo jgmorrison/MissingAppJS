@@ -23,7 +23,7 @@ app.controller("MyCtrl", function ($scope, $http) {
 	$scope.getCityStateInfo();
 
 	$scope.getResults = function () {
-		$http.get('http://localhost:3000/getter', {params: {
+		$http.get('http://localhost:3000/getdata', {params: {
                 "state" : $scope.selectedState, 
                 "city" : $scope.selectedCity, 
                 "gender" : $scope.gender}
