@@ -35,15 +35,17 @@
 
 <!--Date Selector-->
 	<p>Date: </p>
-	<select>
+	<select data-ng-model="selectedMonth" data-ng-change="range()">
 		<option value="">--Select Month--</option>
+        <option data-ng-repeat="item in monthData" value="{{ $index }}">{{ item.month }}</option>
 	</select>
-	<select>
+	<select data-ng-model="selectedDay">
                 <option value="">--Select Day--</option>
-        </select>
+        <option data-ng-repeat="item in days" value="{{ $index }}">{{ item }}</option>
+    </select>
 	<select>
-                <option value="">--Select Year--</option>
-        </select>
+            <option value="">--Select Year--</option>
+    </select>
 
 <!--Gender Selector-->
 	<p>Gender: </p>

@@ -7,6 +7,9 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.stateList = [];
 	$scope.results = {};
     $scope.gender = "";
+    $scope.selectedMonth = "";
+    $scope.selectedDay = "";
+    
 
 	$scope.updateCityList = function () {
 		$scope.cityList = $scope.cityStateInfo[$scope.selectedStateIndex].cities;
@@ -35,11 +38,18 @@ app.controller("MyCtrl", function ($scope, $http) {
 		$http.get('http://localhost:3000/getdata', {params: {
                 "state" : $scope.selectedState, 
                 "city" : $scope.selectedCity, 
-                "gender" : $scope.gender}
+                "gender" : $scope.gender},
             })
 			.then(function (res) {
 				$scope.results = res.data;
 			}); 
 	};
     
+    $scope.days;
+    $scope.range = function () {
+        $scope.days = [];
+        for (var i = 1; i < $scope.monthData[$scope.selectedMonth].numberOfDays + 1; i++) {
+            $scope.days.push(i);
+        }
+    };
 });
