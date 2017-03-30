@@ -19,6 +19,10 @@ app.get("/cityStateInfo", function (req, res) {
 	res.sendFile(__dirname + '/src/assets/cityStateInfo.json');
 });
 
+app.get("/months", function (req, res) {
+    res.sendFile(__dirname +'/src/assets/months.json');
+});
+
 app.get("/data", function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
     charley.find(function (err, data) {
