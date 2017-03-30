@@ -22,6 +22,15 @@ app.controller("MyCtrl", function ($scope, $http) {
 	};
 	$scope.getCityStateInfo();
 
+    $scope.monthData = {};
+    $scope.getMonths = function () {
+        $http.get('http://localhost:3000/months')
+            .then(function (res) {
+                $scope.monthData = res.data;
+        });
+    };
+    $scope.getMonths();
+    
 	$scope.getResults = function () {
 		$http.get('http://localhost:3000/getdata', {params: {
                 "state" : $scope.selectedState, 
