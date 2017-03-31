@@ -6,7 +6,7 @@ app.controller("MyCtrl", function ($scope, $http) {
 	$scope.cityList = [];
     $scope.stateList = [];
 	$scope.results = {};
-    $scope.gender = "";
+    $scope.selectedGender = "";
     $scope.selectedMonth = "";
     $scope.selectedDay = "";
     $scope.selectedYear = "";
@@ -39,7 +39,10 @@ app.controller("MyCtrl", function ($scope, $http) {
 		$http.get('http://localhost:3000/getdata', {params: {
                 "state" : $scope.selectedState, 
                 "city" : $scope.selectedCity, 
-                "gender" : $scope.gender},
+                "gender" : $scope.selectedGender,
+                "year" : $scope.selectedYear,
+                "month" : $scope.selectedMonth + 1,
+                "day" : $scope.selectedDay}
             })
 			.then(function (res) {
 				$scope.results = res.data;
@@ -56,7 +59,7 @@ app.controller("MyCtrl", function ($scope, $http) {
     
     $scope.yearsRange = function (start, end) {
         $scope.years = [];
-        for (var i = start; i < end + 1; i++) {
+        for (var i = end; i >= start; i--) {
             $scope.years.push(i);
         }
         return $scope.years;

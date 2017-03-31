@@ -64,12 +64,36 @@ app.get("/data/:state/:city/:gender", function (req, res) {
 app.use("/getdata", function (req, res, next) {
     req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender']};
     
+    req_date = [req.query["year"], req.query["month"], req.query["day"]];
+    
+    console.log(req_date);
+    
+    if (req_date[1].length == 1) {
+        req_date[1] = "0" + req_date[1];
+    }
+    if (req_date[2].length == 1) {
+        req_date[2] = "0" + req_date[2];
+    }
+    
+    
     var search_params = {};
     for (var k in req_queries) {
         if (req_queries[k] != "") {
             search_params[k] = req_queries[k];
         }
+        
+    date_string = "";
+    for (var i = 0; i < req_date.length; i++)
+        if (req_date[i] != "") {
+            if (date_string == "") {
+                date_string+= req_date[i];
+            } else {
+                date_string+= "-" + req_date[i];
+            }
+        }
     }
+    search_params["Missing_Since"] = {$regex : date_string};
+    console.log(search_params);
     res.search_params = search_params;
     next();
 });
