@@ -9,6 +9,7 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.gender = "";
     $scope.selectedMonth = "";
     $scope.selectedDay = "";
+    $scope.selectedYear = "";
     
 
 	$scope.updateCityList = function () {
@@ -46,10 +47,18 @@ app.controller("MyCtrl", function ($scope, $http) {
 	};
     
     $scope.days;
-    $scope.range = function () {
+    $scope.daysRange = function () {
         $scope.days = [];
         for (var i = 1; i < $scope.monthData[$scope.selectedMonth].numberOfDays + 1; i++) {
             $scope.days.push(i);
         }
+    };
+    
+    $scope.yearsRange = function (start, end) {
+        $scope.years = [];
+        for (var i = start; i < end + 1; i++) {
+            $scope.years.push(i);
+        }
+        return $scope.years;
     };
 });
