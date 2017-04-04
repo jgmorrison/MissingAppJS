@@ -5,7 +5,7 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.selectedCity = "";
 	$scope.cityList = [];
     $scope.stateList = [];
-	$scope.results = {};
+	$scope.results;
     $scope.selectedGender = "";
     $scope.selectedMonth = "";
     $scope.selectedDay = "";
@@ -37,9 +37,11 @@ app.controller("MyCtrl", function ($scope, $http) {
     
     $scope.monthCorrection = function () {
         if ($scope.selectedMonth != "") {
-            return $scope.selectedMonth + 1;
-        };
-        return "";
+            return parseInt($scope.selectedMonth) + 1;
+        }
+        else {
+        return ""; 
+        }
     };
     
 	$scope.getResults = function () {

@@ -65,10 +65,10 @@ app.use("/getdata", function (req, res, next) {
     
     req_date = [req.query["year"], req.query["month"], req.query["day"]];
     
-    if (req_date[1].length == 1) {
+    if (req_date[1] != undefined && req_date[1].length == 1) {
         req_date[1] = "0" + req_date[1];
     }
-    if (req_date[2].length == 1) {
+    if (req_date[2] != undefined && req_date[2].length == 1) {
         req_date[2] = "0" + req_date[2];
     }
 
