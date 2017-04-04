@@ -60,7 +60,6 @@ app.get("/data/:state/:city/:gender", function (req, res) {
     });
 });
 
-
 app.use("/getdata", function (req, res, next) {
     req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender']};
     
@@ -74,24 +73,25 @@ app.use("/getdata", function (req, res, next) {
     if (req_date[2].length == 1) {
         req_date[2] = "0" + req_date[2];
     }
-    
-    
+
     var search_params = {};
     for (var k in req_queries) {
         if (req_queries[k] != "") {
             search_params[k] = req_queries[k];
         }
-        
-    date_string = "";
-    for (var i = 0; i < req_date.length; i++)
-        if (req_date[i] != "") {
-            if (date_string == "") {
-                date_string+= req_date[i];
-            } else {
-                date_string+= "-" + req_date[i];
-            }
-        }
     }
+
+    date_string = "";
+    if (req_date[0] != '') {
+        date_string+= req_date[0];
+    }
+    if (req_date[1] != '') {
+        date_string+= "-" + req_date[1] + "-";
+    }
+    if (req_date[2] != '') {
+        date_string+= req_date[2];
+    }
+    
     search_params["Missing_Since"] = {$regex : date_string};
     console.log(search_params);
     res.search_params = search_params;

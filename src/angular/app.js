@@ -35,13 +35,20 @@ app.controller("MyCtrl", function ($scope, $http) {
     };
     $scope.getMonths();
     
+    $scope.monthCorrection = function () {
+        if ($scope.selectedMonth != "") {
+            return $scope.selectedMonth + 1;
+        };
+        return "";
+    };
+    
 	$scope.getResults = function () {
 		$http.get('http://localhost:3000/getdata', {params: {
                 "state" : $scope.selectedState, 
                 "city" : $scope.selectedCity, 
                 "gender" : $scope.selectedGender,
                 "year" : $scope.selectedYear,
-                "month" : $scope.selectedMonth + 1,
+                "month" : $scope.monthCorrection(),
                 "day" : $scope.selectedDay}
             })
 			.then(function (res) {
