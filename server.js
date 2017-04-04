@@ -65,6 +65,8 @@ app.use("/getdata", function (req, res, next) {
     
     req_date = [req.query["year"], req.query["month"], req.query["day"]];
     
+    console.log(req_date);
+    
     if (req_date[1].length == 1) {
         req_date[1] = "0" + req_date[1];
     }
@@ -91,6 +93,7 @@ app.use("/getdata", function (req, res, next) {
     }
     
     search_params["Missing_Since"] = {$regex : date_string};
+    console.log(search_params);
     res.search_params = search_params;
     next();
 });
