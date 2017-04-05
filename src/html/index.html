@@ -69,6 +69,7 @@
 
     <h3 data-ng-hide="results">Please submit a search.</h3>
     <h3 data-ng-show="results.length == 0">No results match your search.</h3>
+    <p>{{ results.length }} results found</p>
     
     <div data-ng-repeat="case in results">
         <p class="small-6 large-6 columns"><b>Name:</b> {{ case.Name }}</p>
