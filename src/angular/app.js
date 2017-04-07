@@ -11,6 +11,18 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.selectedDay = "";
     $scope.selectedYear = "";
     
+    $scope.reset = function () {
+        $scope.selectedStateIndex = "";
+        $scope.selectedState = "";
+        $scope.selectedCity = "";
+        $scope.cityList = [];
+        $scope.stateList = [];
+        $scope.results;
+        $scope.selectedGender = "";
+        $scope.selectedMonth = "";
+        $scope.selectedDay = "";
+        $scope.selectedYear = "";
+    };
 
 	$scope.updateCityList = function () {
 		$scope.cityList = $scope.cityStateInfo[$scope.selectedStateIndex].cities;
