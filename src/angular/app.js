@@ -70,9 +70,8 @@ app.controller("MyCtrl", function ($scope, $http) {
 			}); 
 	};
     
-    $scope.days;
+    $scope.days = [];
     $scope.daysRange = function () {
-        $scope.days = [];
         for (var i = 1; i < $scope.monthData[$scope.selectedMonth].numberOfDays + 1; i++) {
             $scope.days.push(i);
         }
