@@ -29,7 +29,7 @@
 </div>  
 
 <!--Selector Section-->
-<div class="small-12 medium-12 large-3 columns hide-for-small-only" id="selector" style="height: 850px; padding: 100px 50px 50px 50px;">
+<div class="small-12 medium-3 large-3 columns hide-for-small-only" id="selector" style="height: 850px; padding: 100px 50px 50px 50px;">
 	<p>Selector Area:</p>
 <!--Location Selector-->
 	<p>Location: </p>
@@ -75,14 +75,14 @@
 </div>
 
 <!--Results Section-->
-<div class="small-12 large-9 columns" style="padding-top: 100px; height: 850px; overflow: scroll;">
+<div class="small-12 medium-9 large-9 columns" style="padding-top: 100px; height: 850px; overflow: scroll;">
 
     <div data-ng-hide="results" style="text-align: center; margin-top: 30%;">
     <h3 >Please submit a search.</h3>
     <h3 class="show-for-small-only">Get started by selecting the icon in the upper right.</h3>
     </div>
     
-    <h3 data-ng-show="results.length == 0">No results match your search.</h3>
+    <h3  style="text-align: center; margin-top: 30%;" data-ng-show="results.length == 0">No results match your search.</h3>
     <p data-ng-show="results.length">{{ results.length }} results found</p>
     
     <div data-ng-repeat="case in results">
