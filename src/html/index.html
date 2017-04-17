@@ -3,24 +3,33 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../css/foundation.css"/>
 <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+<link rel="stylesheet" type+"text/css" href="../css/foundation-icons.css"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+<script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
 
 <div data-ng-app="MyApp" data-ng-controller="MyCtrl">
+    
+<div class="off-canvas-content" data-off-canvas-content>  
 
 <!--Top Menu Bar-->
 <div class="title-bar" id="fixed">
-	<div class="title-bar-left">
+	<div class="title-bar-left" style="margin: 5px; font-size: 1.5em;">
 		MyAppJS
 	</div>
-		<div class="menu-icon title-bar-right" style="margin: 5px;">
+    <div class="title-bar-right" style="margin: 5px; font-size: 1.5em;">
+        <button class="show-for-small-only" type="button" data-toggle="offCanvas" style="color: white;">
+            <i class="fi-magnifying-glass"></i>
+        </button>
+
 	</div>
-</div>
+</div>  
 
 <!--Selector Section-->
-<div class="small-12 medium-12 large-3 columns" id="selector" style="height: 850px; padding: 50px;">
+<div class="small-12 medium-12 large-3 columns hide-for-small-only" id="selector" style="height: 850px; padding: 50px;">
 	<p>Selector Area:</p>
 <!--Location Selector-->
 	<p>Location: </p>
@@ -93,9 +102,59 @@
 </div>
 
 <div class="small-12 large-12 columns " style="height: 70px; background-color: gray;"></div>
-                                                                
+
 </div>
-                                                                
+<div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+    <!--Selector Section-->
+<div class="small-12 medium-12 large-3 columns" id="selector" style="height: 850px; padding: 50px;">
+	<p>Selector Area:</p>
+<!--Location Selector-->
+	<p>Location: </p>
+	<select data-ng-model="selectedStateIndex" data-ng-change="updateCityList()">
+		<option value="">--Select State--</option>
+		<option data-ng-repeat="item in cityStateInfo" value="{{ $index }}">{{ item.state }}</option>	
+	</select>
+        <select data-ng-model="selectedCity">
+                <option value="">--Select City--</option>
+		<option data-ng-repeat="city in cityList"value="{{ city }}">{{ city }}</option>
+        </select>
+
+<!--Date Selector-->
+	<p>Date: </p>
+	<select data-ng-model="selectedMonth" data-ng-change="daysRange()">
+		<option value="">--Select Month--</option>
+        <option data-ng-repeat="item in monthData" value="{{ $index }}">{{ item.month }}</option>
+	</select>
+	<select data-ng-model="selectedDay">
+        <option value="">--Select Day--</option>
+        <option data-ng-repeat="item in days" value="{{ item }}">{{ item }}</option>
+    </select>
+	<select data-ng-model="selectedYear">
+        <option value="">--Select Year--</option>
+        <option data-ng-repeat="year in yearsRange(1910, 2016)" value="{{ year }}">{{ year }}</option>
+    </select>
+
+<!--Gender Selector-->
+	<p>Gender: </p>
+	<div class="row">
+		<div class="small-5 small-offset-1 columns">
+			<p>Male</p>
+			<input data-ng-model="selectedGender" type="radio" value="male" name="gender">
+		</div>
+		<div class="small-5 columns">
+            <p>Female</p>
+            <input data-ng-model="selectedGender" type="radio" value="female" name="gender">
+        </div>
+	</div>
+
+	<button type="button" class="button" data-ng-click="getResults()">Get Results!</button>
+    <button type="button" class="button" data-ng-click="reset()">Reset</button>
+</div>
+</div>
+</div>
+<script src="../js/vendor/foundation.min.js"></script>
+<script src="../js/vendor/what-input.js"></script>
+<script src="../js/app.js"></script>
 <script src="../angular/app.js"></script>
 </body>
 </html>
