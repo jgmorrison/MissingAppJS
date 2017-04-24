@@ -10,6 +10,8 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.selectedMonth = "";
     $scope.selectedDay = "";
     $scope.selectedYear = "";
+    $scope.resultLimit = 25;
+    $scope.skipAmount = 0;
     
     $scope.reset = function () {
         $scope.selectedStateIndex = "";
@@ -22,6 +24,7 @@ app.controller("MyCtrl", function ($scope, $http) {
         $scope.selectedMonth = "";
         $scope.selectedDay = "";
         $scope.selectedYear = "";
+        $scope.skipAmount = 0;
     };
 
 	$scope.updateCityList = function () {
@@ -63,7 +66,8 @@ app.controller("MyCtrl", function ($scope, $http) {
                 "gender" : $scope.selectedGender,
                 "year" : $scope.selectedYear,
                 "month" : $scope.monthCorrection(),
-                "day" : $scope.selectedDay}
+                "day" : $scope.selectedDay,
+                "skipAmount" : $scope.skipAmount}
             })
 			.then(function (res) {
 				$scope.results = res.data;
@@ -84,4 +88,5 @@ app.controller("MyCtrl", function ($scope, $http) {
         }
         return $scope.years;
     };
+    
 });
