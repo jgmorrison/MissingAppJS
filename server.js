@@ -63,7 +63,7 @@ app.get("/data/:state/:city/:gender", function (req, res) {
 });
 
 app.use("/getdata", function (req, res, next) {
-    req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender']};
+    req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender'], "skipAmount" : req.query["skipAmount"]};
     
     req_date = [req.query["year"], req.query["month"], req.query["day"]];
     
