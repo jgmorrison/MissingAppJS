@@ -11,6 +11,11 @@ mongoose.connection.on("open", function () {
 
 app.use(express.static('src'));
 
+app.get("*", function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/src/html/index.html');
 });
@@ -31,7 +36,6 @@ app.get("/data", function (req, res) {
 });
 
 app.get("/data/:state", function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
     var state = req.params.state;
     charley.find({"State" : state}, function (err, data) {
@@ -40,7 +44,6 @@ app.get("/data/:state", function (req, res) {
 });
 
 app.get("/data/:state/:city", function (req, res) {
-	res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
     var state = req.params.state;
     var city = req.params.city;
@@ -50,7 +53,6 @@ app.get("/data/:state/:city", function (req, res) {
 });
     
 app.get("/data/:state/:city/:gender", function (req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
     var state = req.params.state;
     var city = req.params.city;
@@ -101,4 +103,4 @@ app.get("/getdata", function (req, res) {
     }) 
 });
 
-app.listen('3000');
+app.listen('3000', '0.0.0.0');

@@ -31,7 +31,7 @@ app.controller("MyCtrl", function ($scope, $http) {
 
 	$scope.cityStateInfo = {};
 	$scope.getCityStateInfo = function () {
-		$http.get('http://localhost:3000/cityStateInfo')
+		$http.get('http://127.0.0.1:3000/cityStateInfo')
 			.then(function (res) {
 				$scope.cityStateInfo = res.data;
 			});
@@ -40,7 +40,7 @@ app.controller("MyCtrl", function ($scope, $http) {
 
     $scope.monthData = {};
     $scope.getMonths = function () {
-        $http.get('http://localhost:3000/months')
+        $http.get('http://127.0.0.1:3000/months')
             .then(function (res) {
                 $scope.monthData = res.data;
         });
@@ -57,7 +57,7 @@ app.controller("MyCtrl", function ($scope, $http) {
     };
     
 	$scope.getResults = function () {
-		$http.get('http://localhost:3000/getdata', {params: {
+		$http.get('http://127.0.0.1:3000/getdata', {params: {
                 "state" : $scope.selectedState, 
                 "city" : $scope.selectedCity, 
                 "gender" : $scope.selectedGender,
