@@ -67,7 +67,8 @@ app.controller("MyCtrl", function ($scope, $http) {
                 "year" : $scope.selectedYear,
                 "month" : $scope.monthCorrection(),
                 "day" : $scope.selectedDay,
-                "skipAmount" : $scope.skipAmount}
+                "skipAmount" : $scope.skipAmount,
+                "resultLimit" : $scope.resultLimit}
             })
 			.then(function (res) {
 				$scope.results = res.data;

@@ -1,5 +1,5 @@
 -add query skip_amount to /getData middleware's req_qureies. 
--add "more" button to html in results body
+√add "more" button to html in results body
 -add angular function to resubmit the query with $scope.skipAmount
 -check if there are more than 25 results and send {more: true} to angular
 -append more results to existing results
