@@ -26,6 +26,7 @@ app.controller("MyCtrl", function ($scope, $http) {
         $scope.selectedDay = "";
         $scope.selectedYear = "";
         $scope.skipAmount = 0;
+        $scope.isMoreResults = false;
     };
 
 	$scope.updateCityList = function () {
