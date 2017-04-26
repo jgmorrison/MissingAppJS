@@ -12,6 +12,7 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.selectedYear = "";
     $scope.resultLimit = 25;
     $scope.skipAmount = 0;
+    $scope.isMoreResults = false;
     
     $scope.reset = function () {
         $scope.selectedStateIndex = "";
@@ -73,6 +74,7 @@ app.controller("MyCtrl", function ($scope, $http) {
 			.then(function (res) {
 				$scope.results = $scope.results.concat(res.data);
                 $scope.skipAmount += 25;
+                $scope.isMoreResults = true;
 			}); 
 	};
     
