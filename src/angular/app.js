@@ -5,7 +5,7 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.selectedCity = "";
 	$scope.cityList = [];
     $scope.stateList = [];
-	$scope.results;
+	$scope.results = [];
     $scope.selectedGender = "";
     $scope.selectedMonth = "";
     $scope.selectedDay = "";
@@ -71,7 +71,8 @@ app.controller("MyCtrl", function ($scope, $http) {
                 "resultLimit" : $scope.resultLimit}
             })
 			.then(function (res) {
-				$scope.results.concat(res.data);
+				$scope.results = $scope.results.concat(res.data);
+                $scope.skipAmount += 25;
 			}); 
 	};
     

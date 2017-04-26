@@ -63,7 +63,7 @@ app.get("/data/:state/:city/:gender", function (req, res) {
 });
 
 app.use("/getdata", function (req, res, next) {
-    req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender'], "skipAmount" : req.query["skipAmount"], "resultLimit" : req.query["resultLimit"]};
+    req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender']};
     
     req_date = [req.query["year"], req.query["month"], req.query["day"]];
     
@@ -74,6 +74,9 @@ app.use("/getdata", function (req, res, next) {
         req_date[2] = "0" + req_date[2];
     }
 
+    res.resultLimit = parseInt(req.query["resultLimit"]);
+    res.skipAmount = parseInt(req.query["skipAmount"]);
+    
     var search_params = {};
     for (var k in req_queries) {
         if (req_queries[k] != "") {
@@ -98,9 +101,10 @@ app.use("/getdata", function (req, res, next) {
 });
 
 app.get("/getdata", function (req, res) {
-    charley.find(res.search_params, function (err, data) {
+    var search = charley.find(res.search_params).skip(res.skipAmount).limit(res.resultLimit);
+    search.exec(function (err, data) {
         res.send(data);
-    }) 
+    });
 });
 
 app.listen('3000', '0.0.0.0');
