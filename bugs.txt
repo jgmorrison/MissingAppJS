@@ -1,3 +1,3 @@
-- page not clearing on reset or new search (maybe use watch)
-- may need to remove if statement on results = undefined. Find better way to hide/show based on no data.
+- Clear results section on reset
+- Fix radio buttons not responding to first click
 - 
