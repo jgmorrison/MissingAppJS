@@ -81,10 +81,39 @@ app.controller("MyCtrl", function ($scope, $http) {
                 } else {
 				    $scope.results = $scope.results.concat(res.data);
                     $scope.skipAmount += 25;
-                    $scope.isMoreResults = true;
+                    if (res.data.length >= 25) {
+                        $scope.isMoreResults = true;
+                    }
                 }
 			}); 
 	};
+    
+    $scope.getMore = function () {
+        $http.get('http://127.0.0.1:3000/getdata', {params: {
+                "state" : $scope.selectedState, 
+                "city" : $scope.selectedCity, 
+                "gender" : $scope.selectedGender,
+                "year" : $scope.selectedYear,
+                "month" : $scope.monthCorrection(),
+                "day" : $scope.selectedDay,
+                "skipAmount" : $scope.skipAmount,
+                "resultLimit" : $scope.resultLimit}
+            })
+			.then(function (res) {
+                if ($scope.results == undefined) {
+                    $scope.results = [];
+                }
+                if (res.data.length == 0) {
+                    $scope.isMoreResults = false;
+                } else {
+				    $scope.results = $scope.results.concat(res.data);
+                    $scope.skipAmount += 25;
+                    if (res.data.length >= 25) {
+                        $scope.isMoreResults = true;
+                    }
+                }
+			}); 
+    };
     
     $scope.days = [];
     $scope.daysRange = function () {
