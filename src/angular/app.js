@@ -75,14 +75,10 @@ app.controller("MyCtrl", function ($scope, $http) {
                 if ($scope.results == undefined) {
                     $scope.results = [];
                 }
-                if (res.data.length == 0) {
-                    $scope.isMoreResults = false;
-                } else {
-				    $scope.results = $scope.results.concat(res.data);
-                    $scope.skipAmount += 25;
-                    if (res.data.length >= 25) {
-                        $scope.isMoreResults = true;
-                    }
+				$scope.results = $scope.results.concat(res.data);
+                $scope.skipAmount += 25;
+                if (res.data.length >= 25) {
+                    $scope.isMoreResults = true;
                 }
 			}); 
 	};
