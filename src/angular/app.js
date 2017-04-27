@@ -13,6 +13,7 @@ app.controller("MyCtrl", function ($scope, $http) {
     $scope.resultLimit = 25;
     $scope.skipAmount = 0;
     $scope.isMoreResults = false;
+    $scope.searchMade = false;
     
     $scope.reset = function () {
         $scope.selectedStateIndex = "";
@@ -27,6 +28,7 @@ app.controller("MyCtrl", function ($scope, $http) {
         $scope.selectedYear = "";
         $scope.skipAmount = 0;
         $scope.isMoreResults = false;
+        $scope.searchMade = false;
     };
 
 	$scope.updateCityList = function () {
@@ -77,6 +79,7 @@ app.controller("MyCtrl", function ($scope, $http) {
                 }
 				$scope.results = $scope.results.concat(res.data);
                 $scope.skipAmount += 25;
+                $scope.searchMade = true;
                 if (res.data.length >= 25) {
                     $scope.isMoreResults = true;
                 }
