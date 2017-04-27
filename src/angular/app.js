@@ -100,9 +100,6 @@ app.controller("MyCtrl", function ($scope, $http) {
                 "resultLimit" : $scope.resultLimit}
             })
 			.then(function (res) {
-                if ($scope.results == undefined) {
-                    $scope.results = [];
-                }
                 if (res.data.length == 0) {
                     $scope.isMoreResults = false;
                 } else {
