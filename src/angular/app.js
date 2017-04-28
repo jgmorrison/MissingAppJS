@@ -29,6 +29,8 @@ app.controller("MyCtrl", function ($scope, $http) {
         $scope.skipAmount = 0;
         $scope.isMoreResults = false;
         $scope.searchMade = false;
+        var resultsSection = angular.element(document.querySelectorAll('#resultsSection'));
+        resultsSection.empty();
     };
 
 	$scope.updateCityList = function () {

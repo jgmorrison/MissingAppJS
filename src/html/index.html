@@ -85,9 +85,9 @@
     <h3  style="text-align: center; margin-top: 30%;" data-ng-show="results.length == 0">No results match your search.</h3>
     <p data-ng-show="results.length">{{ results.length }} results found</p>
     
-    <div data-ng-repeat="case in results">
+    <div id="resultsSection" data-ng-repeat="case in results">
         <p class="small-6 large-6 columns"><b>Name:</b> {{ case.Name }}</p>
-	<p class="small-6 large-6 columns"><b>Missing Since:</b> {{ case.Missing_Since }}</p>
+        <p class="small-6 large-6 columns"><b>Missing Since:</b> {{ case.Missing_Since }}</p>
         <p class="small-6 large-6 columns"><b>Age:</b> {{ case.Age }}</p>
         <p class="small-6 large-6 columns"><b>Date of Birth:</b> {{case.DOB }}</p>
         <p class="small-6 large-6 columns"><b>Height and Weight:</b> {{ case.Height_Weight }}</p>
