@@ -5,9 +5,9 @@ var charley = require('./models/charley.js');
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/missing_persons');
-mongoose.connection.on("open", function () {
-		console.log("mongodb is connected!!");
-        });
+//mongoose.connection.on("open", function () {
+//		console.log("mongodb is connected!!");
+//       });
 
 app.use(express.static('src'));
 
