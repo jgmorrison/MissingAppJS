@@ -32,14 +32,6 @@ app.get("/data", function (req, res) {
     });
 });
 
-app.get("/data/:state", function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    var state = req.params.state;
-    charley.find({"State" : state}, function (err, data) {
-        res.send(data);
-    });
-});
-    
 app.get("/data/:state/:city/:gender", function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     var state = req.params.state;
