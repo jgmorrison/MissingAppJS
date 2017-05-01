@@ -32,16 +32,6 @@ app.get("/data", function (req, res) {
     });
 });
 
-app.get("/data/:state/:city/:gender", function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-    var state = req.params.state;
-    var city = req.params.city;
-    var gender = req.params.gender;
-    charley.find({"State" : state, "City" : city, "Gender" : gender}, function (err, data) {
-        res.send(data);
-    });
-});
-
 app.use("/getdata", function (req, res, next) {
     req_queries = {"State" : req.query['state'], "City" : req.query['city'], "Gender" : req.query['gender']};
     
