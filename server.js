@@ -1,10 +1,10 @@
 var express = require('express');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 var charley = require('./models/charley.js');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/missing_persons');
+//mongoose.connect('mongodb://localhost:27017/missing_persons');
 
 app.use(express.static('src'));
 
