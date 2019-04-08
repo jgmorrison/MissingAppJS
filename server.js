@@ -4,7 +4,7 @@ var charley = require('./models/charley.js');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/missing_persons');
+mongoose.connect('mongodb://172.31.80.157:27017/missing_persons');
 
 app.use(express.static('src'));
 
