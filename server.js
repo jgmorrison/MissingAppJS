@@ -5,7 +5,7 @@ var mongoURL = process.env.MONGO_URL;
 
 var app = express();
 
-mongoose.connect('mongodb://' + mongoURL + ':27017/missing_persons');
+mongoose.connect('mongodb://3.93.39.66:27017/missing_persons');
 
 app.use(express.static('src'));
 
