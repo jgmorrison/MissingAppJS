@@ -1,11 +1,11 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var charley = require('./models/charley.js');
-var mongoURL = process.env.MONGO_URL;
+//var mongoURL = process.env.MONGO_URL;
 
 var app = express();
 
-mongoose.connect('mongodb://' + mongoURL + ':27017/missing_persons');
+mongoose.connect('mongodb://54.162.250.238:27017/missing_persons');
 
 app.use(express.static('src'));
 
